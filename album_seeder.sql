@@ -1,4 +1,5 @@
 use codeup_test_db;
+TRUNCATE albums;
 drop table if exists albums;
 create table albums (artist VARCHAR(100),record VARCHAR(100),sales float);
 insert into albums (artist, record, sales)

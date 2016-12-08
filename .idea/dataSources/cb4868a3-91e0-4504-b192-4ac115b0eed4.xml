@@ -9,5 +9,6 @@
     <schema id="4" name="mysql"/>
     <schema id="5" name="performance_schema"/>
     <schema id="6" name="sys"/>
+    <schema id="7" name="employees"/>
   </database-model>
 </dataSource>
