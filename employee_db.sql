@@ -1,29 +1,38 @@
-use employees;
+USE employees;
 
-SELECT DISTINCT dept_name as 'Department Name', concat(e.first_name," ",e.last_name) AS 'Department Manager'
-from employees as e
-JOIN dept_manager as dm on dm.emp_no = e.emp_no
-join departments as d on d.dept_no = dm.dept_no
-where dm.to_date > curdate();
+SELECT DISTINCT
+  dept_name                              AS 'Department Name',
+  concat(e.first_name, " ", e.last_name) AS 'Department Manager'
+FROM employees AS e
+  JOIN dept_manager AS dm ON dm.emp_no = e.emp_no
+  JOIN departments AS d ON d.dept_no = dm.dept_no
+WHERE dm.to_date > curdate();
 
-SELECT DISTINCT dept_name as 'Department Name', concat(e.first_name," ",e.last_name) AS 'Department Manager'
-from employees as e
-  JOIN dept_manager as dm on dm.emp_no = e.emp_no
-  join departments as d on d.dept_no = dm.dept_no
-where e.gender = "F" AND dm.to_date > curdate();
+SELECT DISTINCT
+  dept_name                              AS 'Department Name',
+  concat(e.first_name, " ", e.last_name) AS 'Department Manager'
+FROM employees AS e
+  JOIN dept_manager AS dm ON dm.emp_no = e.emp_no
+  JOIN departments AS d ON d.dept_no = dm.dept_no
+WHERE e.gender = "F" AND dm.to_date > curdate();
 
-select title as Title, count(de.emp_no) as Count
-from titles as t
-join dept_emp as de on t.emp_no = de.emp_no
-where de.dept_no = "d001"
-GROUP BY title; /*this shit DOES NOT FUCKING WORK*/
+SELECT
+  title            AS Title,
+  count(de.emp_no) AS Count
+FROM titles AS t
+  JOIN dept_emp AS de ON t.emp_no = de.emp_no
+WHERE de.dept_no = "d001"
+GROUP BY title;
+/*this shit DOES NOT WORK*/
 
-SELECT dept_name as 'Department Name', concat(e.first_name," ",e.last_name) AS Name, salary as Salary
-from employees e
-join dept_manager as dm on dm.emp_no = e.emp_no
-join departments as d on d.dept_no = dm.dept_no
-join salaries as s on dm.emp_no = s.emp_no
-where dm.to_date >= curdate();
-
+SELECT
+  dept_name                              AS "Department Name",
+  concat(e.first_name, " ", e.last_name) AS Name,
+  salary                                 AS Salary
+FROM employees e
+  JOIN dept_manager AS dm ON dm.emp_no = e.emp_no
+  JOIN departments AS d ON d.dept_no = dm.dept_no
+  JOIN salaries AS s ON s.emp_no = dm.emp_no
+WHERE dm.to_date = CURDATE();
 
 
