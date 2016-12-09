@@ -1,12 +1,13 @@
+create DATABASE IF NOT EXISTS join_test_db;
 use join_test_db;
 
-CREATE TABLE roles (
+CREATE TABLE if not exists roles (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   name VARCHAR(100) NOT NULL,
   PRIMARY KEY (id)
 );
 
-CREATE TABLE users (
+CREATE TABLE if not exists users (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   name VARCHAR(100) NOT NULL,
   email VARCHAR(100) NOT NULL,
@@ -27,3 +28,9 @@ INSERT INTO users (name, email, role_id) VALUES
   ('adam', 'adam@example.com', 3),
   ('jane', 'jane@example.com', null),
   ('mike', 'mike@example.com', null);
+
+insert into users (name, email, role_id) VALUES
+  ('jen','jen@yahoo.com',2),
+  ('jess','jess@yahoo.com',2),
+  ('john','john@yahoo.com',2),
+  ('ian','ian@yahoo.com',NULL );
