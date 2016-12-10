@@ -31,8 +31,8 @@ SELECT
   salary                                 AS Salary
 FROM employees e
   JOIN dept_manager AS dm ON dm.emp_no = e.emp_no
-  JOIN departments AS d ON d.dept_no = dm.dept_no
   JOIN salaries AS s ON s.emp_no = dm.emp_no
-WHERE dm.to_date = CURDATE();
+  JOIN departments AS d ON d.dept_no = dm.dept_no
+WHERE dm.to_date > CURDATE();
 
 
